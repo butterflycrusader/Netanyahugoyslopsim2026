@@ -1,10 +1,201 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NETANYAHUGOYSLOPSIM2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NetanyahuGoySlopSim 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-display: 'Bebas Neue', Impact, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-hero: clamp(3.5rem, 1rem + 9vw, 10rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+      --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem;
+      --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --space-20: 5rem; --space-24: 6rem;
+      --radius-sm: 0.25rem; --radius-md: 0.5rem; --radius-lg: 0.75rem;
+      --radius-xl: 1rem; --radius-full: 9999px;
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      --color-bg: #0e0d0a;
+      --color-surface: #141310;
+      --color-surface-2: #1a1916;
+      --color-surface-offset: #222018;
+      --color-border: rgba(255,255,255,0.08);
+      --color-text: #e8e4d8;
+      --color-text-muted: #8a8678;
+      --color-text-faint: #4a4840;
+      --color-primary: #c41e1e;
+      --color-primary-hover: #a01515;
+      --color-gold: #c8a84b;
+      --color-olive: #5a6e2a;
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.6);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: var(--space-16); }
+    body { min-height: 100dvh; font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text); background: var(--color-bg); line-height: 1.6; overflow-x: hidden; }
+    img, picture, svg { display: block; max-width: 100%; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    h1,h2,h3,h4,h5,h6 { line-height: 1.1; text-wrap: balance; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--color-bg); }
+    ::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-8); background: rgba(14,13,10,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border); transition: background var(--transition); }
+    .nav-logo { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-primary); letter-spacing: 0.05em; }
+    .nav-logo span { color: var(--color-gold); }
+    .nav-links { display: flex; gap: var(--space-8); }
+    .nav-links a { font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted); letter-spacing: 0.08em; text-transform: uppercase; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--color-text); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: var(--space-2); }
+    .hamburger span { width: 22px; height: 2px; background: var(--color-text); border-radius: 2px; transition: var(--transition); display: block; }
+    @media (max-width: 640px) { .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; padding: var(--space-4) var(--space-8); background: var(--color-surface); border-bottom: 1px solid var(--color-border); gap: var(--space-4); } .nav-links.open { display: flex; } .hamburger { display: flex; } }
+    .hero { min-height: 100dvh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-24) var(--space-8) var(--space-16); position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 50% at 60% 40%, rgba(196,30,30,0.15) 0%, transparent 70%), radial-gradient(ellipse 60% 60% at 20% 80%, rgba(90,110,42,0.12) 0%, transparent 60%), linear-gradient(180deg, #0e0d0a 0%, #141008 50%, #0e0d0a 100%); }
+    .hero-grid { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(200,168,75,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,168,75,0.04) 1px, transparent 1px); background-size: 60px 60px; animation: grid-shift 20s linear infinite; }
+    @keyframes grid-shift { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+    .hero-content { position: relative; z-index: 1; max-width: 960px; }
+    .hero-eyebrow { font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); opacity: 0; animation: fade-up 0.8s 0.2s forwards; }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--color-gold); display: block; }
+    .hero-title { font-family: var(--font-display); font-size: var(--text-hero); line-height: 0.95; letter-spacing: 0.02em; color: var(--color-text); margin-bottom: var(--space-6); opacity: 0; animation: fade-up 0.8s 0.4s forwards; }
+    .hero-title .accent { color: var(--color-primary); }
+    .hero-title .year { color: var(--color-gold); }
+    .hero-sub { font-size: var(--text-lg); color: var(--color-text-muted); max-width: 56ch; margin-bottom: var(--space-10); opacity: 0; animation: fade-up 0.8s 0.6s forwards; }
+    .hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; opacity: 0; animation: fade-up 0.8s 0.8s forwards; }
+    .btn-primary { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-8); background: var(--color-primary); color: #fff; font-size: var(--text-sm); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: var(--radius-sm); transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,30,30,0.4); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-8); color: var(--color-text-muted); font-size: var(--text-sm); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: color var(--transition), border-color var(--transition); }
+    .btn-ghost:hover { color: var(--color-text); border-color: rgba(255,255,255,0.2); }
+    .scroll-hint { position: absolute; bottom: var(--space-8); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: var(--space-2); color: var(--color-text-faint); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; opacity: 0; animation: fade-up 1s 1.2s forwards; }
+    .scroll-dot { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--color-text-faint), transparent); }
+    .ticker { background: var(--color-primary); padding: var(--space-2) 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; gap: var(--space-12); animation: ticker 30s linear infinite; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker span { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #fff; }
+    .ticker-sep { color: rgba(255,255,255,0.4); }
+    .section { padding: clamp(var(--space-16), 8vw, var(--space-24)) var(--space-8); }
+    .section-label { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--color-border); max-width: 60px; }
+    .section-title { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-text); margin-bottom: var(--space-6); }
+    .container { max-width: 960px; margin-inline: auto; }
+    .container-wide { max-width: 1200px; margin-inline: auto; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; }
+    @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; gap: var(--space-8); } }
+    .about-text p { color: var(--color-text-muted); line-height: 1.8; margin-bottom: var(--space-4); max-width: 54ch; }
+    .stat-block { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .stat { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); }
+    .stat-num { font-family: var(--font-display); font-size: var(--text-2xl); color: var(--color-primary); line-height: 1; }
+    .stat-label { font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: var(--space-1); }
+    .modes-bg { background: var(--color-surface); }
+    .modes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr)); gap: var(--space-6); margin-top: var(--space-10); }
+    .mode-card { background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); position: relative; overflow: hidden; }
+    .mode-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--card-accent, var(--color-primary)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .mode-card:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .mode-card:hover::before { transform: scaleX(1); }
+    .mode-icon { font-size: 2rem; margin-bottom: var(--space-4); }
+    .mode-title { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-3); }
+    .mode-desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+    .mode-tag { display: inline-flex; align-items: center; margin-top: var(--space-4); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(196,30,30,0.15); color: var(--color-primary); border: 1px solid rgba(196,30,30,0.3); }
+    .mode-tag.coming { background: rgba(200,168,75,0.1); color: var(--color-gold); border-color: rgba(200,168,75,0.25); }
+    .leaderboard-table { width: 100%; margin-top: var(--space-10); border-collapse: collapse; }
+    .leaderboard-table th { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border); text-align: left; }
+    .leaderboard-table td { padding: var(--space-4); border-bottom: 1px solid var(--color-border); }
+    .leaderboard-table tr:last-child td { border-bottom: none; }
+    .leaderboard-table tbody tr:hover { background: var(--color-surface); }
+    .rank { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text-faint); width: 48px; }
+    .rank.gold { color: var(--color-gold); }
+    .rank.silver { color: #aaa; }
+    .rank.bronze { color: #cd7f32; }
+    .player-name { font-weight: 600; color: var(--color-text); }
+    .player-country { font-size: var(--text-xs); color: var(--color-text-muted); }
+    .score { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-primary); }
+    .badge-pill { display: inline-block; padding: 2px var(--space-2); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.05em; }
+    .badge-elite { background: rgba(200,168,75,0.15); color: var(--color-gold); }
+    .badge-rising { background: rgba(90,110,42,0.2); color: #8aaa3a; }
+    .news-bg { background: var(--color-surface); }
+    .news-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-6); margin-top: var(--space-10); }
+    @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } }
+    .news-feature { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color var(--transition), box-shadow var(--transition); }
+    .news-feature:hover { border-color: rgba(255,255,255,0.15); box-shadow: var(--shadow-md); }
+    .news-feature-img { width: 100%; aspect-ratio: 16/9; background: var(--color-surface-offset); overflow: hidden; }
+    .news-feature-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .news-feature-body { padding: var(--space-6); }
+    .news-tag { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--space-3); }
+    .news-title { font-family: var(--font-display); font-size: var(--text-xl); color: var(--color-text); margin-bottom: var(--space-3); }
+    .news-excerpt { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; }
+    .news-meta { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-4); }
+    .news-sidebar { display: flex; flex-direction: column; gap: var(--space-4); }
+    .news-item { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); transition: border-color var(--transition); cursor: pointer; }
+    .news-item:hover { border-color: rgba(255,255,255,0.15); }
+    .news-item-tag { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-gold); margin-bottom: var(--space-2); }
+    .news-item-title { font-size: var(--text-sm); font-weight: 600; color: var(--color-text); line-height: 1.4; }
+    .news-item-date { font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-2); }
+    .play-cta { text-align: center; padding: clamp(var(--space-16), 10vw, var(--space-24)) var(--space-8); background: linear-gradient(135deg, #0e0d0a 0%, #1a0a0a 50%, #0e0d0a 100%); position: relative; overflow: hidden; }
+    .play-cta::before { content: '2026'; position: absolute; font-family: var(--font-display); font-size: clamp(8rem, 25vw, 22rem); color: rgba(196,30,30,0.04); top: 50%; left: 50%; transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none; line-height: 1; }
+    .play-cta-inner { position: relative; z-index: 1; }
+    .play-cta h2 { font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-4); }
+    .play-cta p { color: var(--color-text-muted); max-width: 48ch; margin: 0 auto var(--space-10); }
+    .play-btn { display: inline-flex; align-items: center; gap: var(--space-3); padding: var(--space-4) var(--space-12); background: var(--color-primary); color: #fff; font-family: var(--font-display); font-size: var(--text-xl); letter-spacing: 0.08em; border-radius: var(--radius-sm); transition: background var(--transition), transform var(--transition), box-shadow var(--transition); box-shadow: 0 0 0 0 rgba(196,30,30,0.4); animation: pulse-glow 2.5s ease-in-out infinite; }
+    .play-btn:hover { background: var(--color-primary-hover); transform: scale(1.05); }
+    @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(196,30,30,0.4); } 50% { box-shadow: 0 0 0 16px rgba(196,30,30,0); } }
+    footer { padding: var(--space-12) var(--space-8); border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4); }
+    .footer-logo { font-family: var(--font-display); font-size: var(--text-lg); color: var(--color-text-muted); }
+    .footer-logo span { color: var(--color-primary); }
+    .footer-copy { font-size: var(--text-xs); color: var(--color-text-faint); }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
 </head>
 <body>
-  <h1>Hello world</h1>
+<nav>
+  <div class="nav-logo">NGS<span>SIM</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#modes">Modes</a></li>
+    <li><a href="#leaderboard">Leaderboard</a></li>
+    <li><a href="#news">News</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Ultimate Political Satire Game</div>
+    <h1 class="hero-title">(((NETANYAHU)))<br><span class="accent">GOY</span> SLOP<br><span class="year">SIM 2026</span></h1>
+    <p class="hero-sub">Navigate the geopolitical chaos of 2026. Every decision has consequences. No one is innocent.</p>
+    <div class="hero-ctas">
+      <a href="#modes" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Play Now</a>
+      <a href="#about" class="btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-dot"></div>Scroll</div>
+</section>
+<div class="ticker" aria-hidden="true"><div class="ticker-inner" id="ticker"><span>BREAKING NEWS</span><span class="ticker-sep">✦</span><span>Diplomatic incident at UN cafeteria</span><span class="ticker-sep">✦</span><span>New DLC: The Ceasefire Update</span><span class="ticker-sep">✦</span><span>Server 7 fully occupied</span><span class="ticker-sep">✦</span><span>Patch 2.6.1 nerfs the press conference stall tactic</span><span class="ticker-sep">✦</span><span>Season 3 Battle Pass now available</span><span class="ticker-sep">✦</span><span>Global sanctions tech tree expanded</span></div></div>
+<section class="section" id="about"><div class="container"><div class="about-grid reveal"><div class="about-text"><div class="section-label">About the Game</div><h2 class="section-title">What Is GoySlopSim?</h2><p>NetanyahuGoySlopSim 2026 is a satirical political simulation where you step into the chaos of modern geopolitics. Make decisions, manage alliances, and watch the world burn — or somehow hold it together.</p><p>Every playthrough is different. Every choice echoes. Every press conference is a minefield.</p><a href="#modes" class="btn-primary" style="margin-top: var(--space-6); display:inline-flex; gap: var(--space-2);">View Game Modes</a></div><div class="stat-block"><div class="stat"><div class="stat-num">47K</div><div class="stat-label">Active Players</div></div><div class="stat"><div class="stat-num">6</div><div class="stat-label">Game Modes</div></div><div class="stat"><div class="stat-num">200+</div><div class="stat-label">Scenarios</div></div><div class="stat"><div class="stat-num">3</div><div class="stat-label">DLC Packs</div></div></div></div></div></section>
+<section class="section modes-bg" id="modes"><div class="container-wide"><div class="reveal"><div class="section-label">Game Modes</div><h2 class="section-title">Choose Your Chaos</h2></div><div class="modes-grid"><div class="mode-card reveal" style="--card-accent: var(--color-primary);"><div class="mode-icon">🗺️</div><div class="mode-title">Campaign</div><p class="mode-desc">A full narrative arc spanning 3 years of political turmoil. Your choices determine the ending — there are 14 of them and none are good.</p><div class="mode-tag">Available</div></div><div class="mode-card reveal" style="--card-accent: var(--color-gold);"><div class="mode-icon">⏱️</div><div class="mode-title">Crisis Mode</div><p class="mode-desc">48 simulated hours. One escalating crisis. No sleep, no mercy. Make the call before the timer hits zero.</p><div class="mode-tag">Available</div></div><div class="mode-card reveal" style="--card-accent: var(--color-olive);"><div class="mode-icon">🌐</div><div class="mode-title">Multiplayer</div><p class="mode-desc">Up to 8 players each control a world power. Negotiate, betray, and sign treaties you'll immediately violate.</p><div class="mode-tag">Available</div></div></div></div></section>
+<section class="section news-bg" id="news"><div class="container-wide"><div class="reveal"><div class="section-label">Latest Updates</div><h2 class="section-title">The War Room Dispatch</h2></div><div class="news-grid reveal"><div class="news-feature"><div class="news-feature-img" aria-label="Season 3 announcement artwork"><img src="IMG_0354.jpeg" alt="Season 3 announcement artwork" width="800" height="450" loading="lazy"></div><div class="news-feature-body"><div class="news-tag">Major Update</div><div class="news-title">Season 3: The Coalition Collapse Has Arrived</div><p class="news-excerpt">The most chaotic season yet drops 6 new scenarios, a reworked alliance system, and the long-requested leaked documents mechanic that lets you destabilize any government mid-game.</p><div class="news-meta">May 29, 2026 · 4 min read</div></div></div><div class="news-sidebar"><div class="news-item"><div class="news-item-tag">Patch Notes</div><div class="news-item-title">Patch 2.6.1 — Press conference stall nerfed, ceasefire buff reverted</div><div class="news-item-date">May 27, 2026</div></div><div class="news-item"><div class="news-item-tag">Community</div><div class="news-item-title">47,000 concurrent players hit during UN vote event — servers held</div><div class="news-item-date">May 24, 2026</div></div></div></div></div></section>
+<section class="play-cta"><div class="play-cta-inner reveal"><h2>Ready to Ruin the World?</h2><p>Thousands of players are already making terrible decisions on behalf of humanity. Join them.</p><a href="#modes" class="play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Play Free</a></div></section>
+<footer><div class="footer-logo">NGS<span>SIM</span> 2026</div><div class="footer-copy">© 2026 NetanyahuGoySlopSim. Satirical content. All chaos fictional.</div></footer>
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('open'); });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => { entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+  const ti = document.getElementById('ticker');
+  if (ti) { const clone = ti.cloneNode(true); ti.parentNode.appendChild(clone); }
+</script>
 </body>
 </html>
